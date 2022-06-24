@@ -4,6 +4,8 @@ const areaConsole = document.getElementById("console");
 	INSERT SORT
 
 	Loop Invariant -> 
+
+	Complex -> O(n^2)
 */
 
 function insertionSort(array) {
@@ -25,12 +27,32 @@ console.log("Ordenada:",l1);
 console.log();
 
 /*
+	LINEAR SEARCH
+	Loop Invariant ->
+	Complex -> O(n)
+*/
+function linearSearch(v, array) {
+	for(let i = 0; i < array.length; i++) {
+		if(v === array[i]) return i;
+	}
+	return -1;
+}
+let l2 = [3,1,4,2,5,6];
+console.log("LINEAR SEARCH")
+console.log("Lista:",l2);
+console.log("Elemento a buscar:",2);
+console.log("Posicion:",linearSearch(2,l2));
+console.log();
+
+/*
 	MERGE SORT
 
 	Loop Invariant -> 	(Para el for que va desde k=p a k<=r)
 						La subsecuencia A[p..k-1] siempre contiene los (k - p) elementos,
 						que son los elementos más pequeños de las secuencias L y R.
 						Tambien los elementos L[i] y R[j] son los más pequeños de ambas secuencias.
+
+	Complex -> O(nlg(n))
 */
 var INF = 999999999;
 function merge(A,p,q,r) {
