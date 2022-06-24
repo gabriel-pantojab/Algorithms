@@ -125,6 +125,31 @@ mergeSort(lista,0,lista.length-1);
 console.log("Ordenada:",lista);
 console.log();
 
+/**
+ *  INSERT SORT RECURSIVO
+ */
+function insertionSortR(array,n) {
+	if(n > 1) {
+		insertionSortR(array,n-1);
+		insert(n-1,array);
+	}
+}
+
+function insert(n, array) {
+	let p = n-1;
+	let key = array[n]
+	while(p >= 0 && array[p] > array[n]) {
+		array[p+1] = array[p]
+		p--;
+	}
+	array[p+1] = key;
+}
+let l4 = [3,1,4,2,5,6];
+console.log("INSERTION SORT RECURSIVO");
+console.log("Desordenado:",l4);
+insertionSortR(l4,l4.length);
+console.log("Ordenada:",l4);
+console.log();
 //**********************************************************************************************//
 
 
