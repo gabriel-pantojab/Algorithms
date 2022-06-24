@@ -3,8 +3,84 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Algorithms</title>
+
+	<style>
+		*{
+			margin: 0;
+			box-sizing: border-box;
+			font-family: arial;
+		}
+		main{
+			width: 100%;
+			min-width: 320px;
+			height: 100vh;
+			background-color: #f0db4f;
+		}
+		.content-console{
+			width: 80%;
+			min-width: 300px;
+			margin:auto;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.console{
+			width:80%;
+			min-width: 280px;
+			height: 500px;
+			background-color: #323330;
+			border-radius: 10px;
+			display: flex;
+			flex-direction: column;
+			border: solid 2px white;
+		}
+		.title-console{
+			border-bottom: solid 2px white;
+			height: 10%;
+			min-width: 276px;
+			max-height: 50px;
+			width: 100%;
+			padding-left: 10px;
+			color:white;
+			display: flex;
+			align-items: center;
+		}
+		.area-out-console{
+			width: 100%;
+			min-width: 276px;
+			height: 90%;
+			color:white;
+			padding:15px;
+			position: relative;
+			overflow-y: auto;
+			border-radius: 0 0 10px 10px;
+		}
+	</style>
+	<script type="text/javascript">
+        console.log = (...params)=>{
+	      let text = "";
+	      for(let o of params){
+		    text += o + " ";
+	      }
+	      text += "<br/>";
+	      areaConsole.innerHTML += text;
+        };
+	</script>
 </head>
 <body>
+	<main>
+		<div class="content-console">
+			<div class="console">
+				<div class="title-console">
+					<h2>Console</h2>
+				</div>
+				<div class="area-out-console" id="console">
+				</div>
+			</div>
+		</div>
+	</main>
 	<script src="./algorithms.js"></script>
 </body>
 </html>
