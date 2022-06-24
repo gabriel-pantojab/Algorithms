@@ -1,3 +1,29 @@
+const areaConsole = document.getElementById("console");
+
+/*
+	INSERT SORT
+
+	Loop Invariant -> 
+*/
+
+function insertionSort(array) {
+	for(let i = 1; i <  array.length; i++) {
+		let key = array[i];
+		let j = i-1;
+		while(j >= 0 && array[j] > key) {
+			array[j+1] = array[j];
+			j--;
+		}
+		array[j+1] = key;
+	}
+}
+let l1 = [3,1,4,2,5,6];
+console.log("INSERTION SORT");
+console.log("Desordenado:",l1);
+insertionSort(l1);
+console.log("Ordenada:",l1);
+console.log();
+
 /*
 	MERGE SORT
 
@@ -18,6 +44,7 @@ function merge(A,p,q,r) {
 	for(let j = 0; j < n2; j++) {
 		R[j] = A[q+j+1]; 
 	}
+
 	L[n1] = INF;
 	R[n2] = INF;
 	let i = 0, j = 0;
@@ -41,10 +68,11 @@ function mergeSort(A,p,r) {
 	}
 }
 
-/*let lista = [-1,3,2,4,1,5,6,1,2];
-console.log("Original:",lista);
+let lista = [-1,3,2,4,56,1,5,6,1,2];
+console.log("MERGE SORT");
+console.log("Desordenado:",lista);
 mergeSort(lista,0,lista.length-1);
-console.log("Ordenada:",lista);*/
+console.log("Ordenada:",lista);
 
 //**********************************************************************************************//
 
