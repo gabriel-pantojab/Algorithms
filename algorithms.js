@@ -3,7 +3,8 @@ const areaConsole = document.getElementById("console");
 /*
 	INSERT SORT
 
-	Loop Invariant -> 
+	Loop Invariant -> (para el while)
+										Los elementos array[0..i-1] siempre estan ordenados.
 
 	Complex -> O(n^2)
 */
@@ -28,7 +29,7 @@ console.log();
 
 /*
 	LINEAR SEARCH
-	Loop Invariant ->
+	Loop Invariant -> v no se encuentra en array[0..i-1]
 	Complex -> O(n)
 */
 function linearSearch(v, array) {
@@ -42,6 +43,33 @@ console.log("LINEAR SEARCH")
 console.log("Lista:",l2);
 console.log("Elemento a buscar:",2);
 console.log("Posicion:",linearSearch(2,l2));
+console.log();
+
+
+/*
+	SELECTION SORT
+	Loop Invariant -> (para el segundo for)
+										Los elementos array[0..i] siempre estan ordenados.
+	Complex -> O(n^2)
+*/
+function selectionSort(array) {
+	for(let i = 0; i < array.length - 1; i++) {
+		let p = i;
+		for(let j = i + 1; j < array.length; j++) {
+			if(array[j] < array[p]) {
+				p = j;
+			}
+		}
+		let aux = array[i];
+		array[i] = array[p];
+		array[p] = aux;
+	}
+}
+let l3 = [-1,3,2,4,56,1,5,6,1,2];
+console.log("SELECTION SORT");
+console.log("Desordenado:",l3);
+selectionSort(l3);
+console.log("Ordenada:",l3);
 console.log();
 
 /*
@@ -95,6 +123,7 @@ console.log("MERGE SORT");
 console.log("Desordenado:",lista);
 mergeSort(lista,0,lista.length-1);
 console.log("Ordenada:",lista);
+console.log();
 
 //**********************************************************************************************//
 
