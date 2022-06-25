@@ -1,4 +1,10 @@
+
 const areaConsole = document.getElementById("console");
+const randomArray = new Array(20);
+for(let i = 0; i < randomArray.length; i++) {
+		randomArray[i] = Math.floor(Math.random() * 20);
+}
+
 
 /*
 	INSERT SORT
@@ -20,7 +26,7 @@ function insertionSort(array) {
 		array[j+1] = key;
 	}
 }
-let l1 = [3,1,4,2,5,6];
+let l1 = [3,1,4,2,5,6,-1,7,-2];
 console.log("INSERTION SORT");
 console.log("Desordenado:",l1);
 insertionSort(l1);
@@ -65,7 +71,7 @@ function selectionSort(array) {
 		array[p] = aux;
 	}
 }
-let l3 = [-1,3,2,4,56,1,5,6,1,2];
+let l3 = [3,1,4,2,5,6,-1,7,-2];
 console.log("SELECTION SORT");
 console.log("Desordenado:",l3);
 selectionSort(l3);
@@ -118,10 +124,12 @@ function mergeSort(A,p,r) {
 	}
 }
 
-let lista = [-1,3,2,4,56,1,5,6,1,2];
+let lista = [...randomArray];
 console.log("MERGE SORT");
 console.log("Desordenado:",lista);
+console.time("Merge Sort");
 mergeSort(lista,0,lista.length-1);
+console.timeEnd("Merge Sort");
 console.log("Ordenada:",lista);
 console.log();
 
@@ -144,7 +152,7 @@ function insert(n, array) {
 	}
 	array[p+1] = key;
 }
-let l4 = [3,1,4,2,5,6];
+let l4 = [3,1,4,2,5,6,-1,7,-2];
 console.log("INSERTION SORT RECURSIVO");
 console.log("Desordenado:",l4);
 insertionSortR(l4,l4.length);
@@ -189,7 +197,31 @@ console.log("Lista:",l5);
 console.log("Elemento a buscar:",5);
 console.log("Posicion:",binarySearchR(5,l5));
 console.log();
-//**********************************************************************************************//
 
+/**
+ *  BUBBLE SORT
+ *  Loop Invariant ->
+ *  Complex -> 
+ */
+function bubbleSort(array) {
+	for(let i = 0; i < array.length - 1; i++) {
+		for(let j = array.length - 1; j > i; j--) {
+			if(array[j] < array[j - 1]) {
+				array[j]   = array[j] + array[j-1];
+				array[j-1] = array[j] - array[j-1];
+				array[j]   = array[j] - array[j-1];
+			}
+		}
+	}
+}
+let l6 = [...randomArray];
+console.log("BUBBLE SORT");
+console.log("Desordenado:",l6);
+console.time("Bubble Sort");
+bubbleSort(l6);
+console.timeEnd("Bubble Sort");
+console.log("Ordenada:",l6);
+console.log();
+//**********************************************************************************************//
 
 
