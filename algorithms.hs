@@ -63,3 +63,18 @@ mergeSort xs = merge left rigth
     left  = mergeSort (take (div n 2) xs)
     rigth = mergeSort (drop (div n 2) xs)
 
+
+{-
+  BINARY SEARCH
+-}
+binarySearch :: (Num a) => (Ord a) => (Eq a) => a -> [a] -> Bool
+binarySearch _ [] = False
+binarySearch v (x:[]) = v == x
+binarySearch v xs
+  | xs!!mid == v = True
+  | xs!!mid < v = binarySearch v rigth
+  |otherwise = binarySearch v left
+  where
+    mid = div (length xs) 2
+    left = take mid xs
+    rigth = drop mid xs
