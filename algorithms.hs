@@ -25,3 +25,21 @@ linearSearch v xs = lS v xs 0
     lS v (x:xs) p
       | v == x = p
       | otherwise = lS v xs (p+1)
+
+{-
+  SELECTION SORT
+-}
+selectionSort :: (Ord a) => [a] -> [a]
+selectionSort (x:[]) = [x]
+selectionSort array@(x:xs) =  smallE : (selectionSort subArray)
+  where
+    list = small array;
+    smallE = head list
+    subArray = tail list
+    small (x:[]) = [x]
+    small (x:xs) 
+      | x < head subL = x : subL
+      | otherwise = head subL : x : tail subL
+      where
+        subL = small xs
+
