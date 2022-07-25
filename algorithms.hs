@@ -31,10 +31,10 @@ linearSearch v xs = lS v xs 0
 -}
 selectionSort :: (Ord a) => [a] -> [a]
 selectionSort (x:[]) = [x]
-selectionSort array@(x:xs) =  smallE : (selectionSort subArray)
+selectionSort array@(x:xs) =  minimun : (selectionSort subArray)
   where
     list = small array;
-    smallE = head list
+    minimun = head list
     subArray = tail list
     small (x:[]) = [x]
     small (x:xs) 
