@@ -43,3 +43,23 @@ selectionSort array@(x:xs) =  minimun : (selectionSort subArray)
       where
         subL = small xs
 
+{-
+  MERGE SORT
+-}
+merge :: (Ord a) => [a] -> [a] -> [a]
+merge [] [] = []
+merge (x:xs) [] = (x:xs)
+merge [] (y:ys) = (y:ys)
+merge (x:xs) (y:ys)
+  | x < y = x : (merge xs (y:ys))
+  | otherwise = y : (merge (x:xs) ys)
+
+mergeSort :: (Ord a) => [a] -> [a]
+mergeSort [] = []
+mergeSort (x:[]) = [x]
+mergeSort xs = merge left rigth
+  where
+    n = length xs
+    left  = mergeSort (take (div n 2) xs)
+    rigth = mergeSort (drop (div n 2) xs)
+
