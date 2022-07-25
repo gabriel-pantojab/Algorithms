@@ -224,4 +224,91 @@ console.log("Ordenada:",l6);
 console.log();
 //**********************************************************************************************//
 
+/**
+ *  FIND MAXIMUM SUBARRAY
+ *  Loop Invariant -> 
+ *  Complex -> O(nlogn)
+ */
+
+const array = [13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7];
+
+function find_max_crossing_subarray(A, low, mid, high) {
+	let max_left, max_right;
+	let left_sum = Number.MIN_VALUE;
+	let sum = 0;	
+	for(let i = mid; i >= low; i--) {
+		sum += A[i];
+		if(sum > left_sum) {
+			left_sum = sum;
+			max_left = i;
+		}
+	}
+	let right_sum = Number.MIN_VALUE;
+	sum = 0;
+	for(let j = mid + 1; j <= high; j++) {
+		sum += A[j];
+		if(sum > right_sum) {
+			right_sum = sum;
+			max_right = j;
+		}
+	}
+	return {max_left, max_right, sum:left_sum + right_sum};
+}
+
+function find_maximun_subarrray(A, low, high) {
+	if(high == low) 
+		return {max_left:low, max_right:high, sum:A[low]};
+	else {
+		let mid = Math.floor((low + high) / 2);
+		let left = find_maximun_subarrray(A, low, mid);
+		let right = find_maximun_subarrray(A, mid + 1, high);
+		let cross = find_max_crossing_subarray(A, low, mid, high);
+		if(left.sum >= right.sum && left.sum >= cross.sum) return left;
+		else if(right.sum >= left.sum && right.sum >= cross.sum) return right;
+		else return cross;
+	}
+}
+
+console.log("FIND MAXIMUM SUBARRAY");
+console.log("Array:",array);
+const res = find_maximun_subarrray(array,0,array.length-1);
+console.log("Subarray:");
+console.log("Maximo:",res.sum);
+console.log("Inicio:",res.max_left);
+console.log("Fin:",res.max_right);
+console.log();
+
+/**
+ *  FIND MAXIMUM SUBARRAY
+ *  Loop Invariant ->
+ *  Complex -> O(n^2)
+ */
+function find_maximun_subarray_bt(A) {
+	let max_left, max_right, max_sum;
+	max_sum = Number.MIN_VALUE;
+	let current_sum = 0;
+	for(let i=0; i < A.length; i++) {
+		current_sum = 0;
+		for(let j=i; j < A.length; j++) {
+			current_sum += A[j];
+			if(current_sum > max_sum) {
+				max_sum = current_sum;
+				max_left = i;
+				max_right = j;
+			}
+		}
+	}
+	return {max_left, max_right, max_sum};
+}
+
+console.log("FIND MAXIMUM SUBARRAY BRUTE FORCE");
+console.log("Array:",array);
+const res2 = find_maximun_subarray_bt(array);
+console.log("Subarray:");
+console.log("Maximo:",res2.max_sum);
+console.log("Inicio:",res2.max_left);
+console.log("Fin:",res2.max_right);
+console.log();
+
+
 
