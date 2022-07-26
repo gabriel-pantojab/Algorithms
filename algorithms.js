@@ -231,6 +231,7 @@ console.log();
  */
 
 const array = [13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7];
+//const array = [1,-5,4,-3,6,2,-12,7,8,2,-10,6,9]
 
 function find_max_crossing_subarray(A, low, mid, high) {
 	let max_left, max_right;
@@ -279,7 +280,7 @@ console.log("Fin:",res.max_right);
 console.log();
 
 /**
- *  FIND MAXIMUM SUBARRAY
+ *  FIND MAXIMUM SUBARRAY BRUTE FORCE
  *  Loop Invariant ->
  *  Complex -> O(n^2)
  */
@@ -308,6 +309,42 @@ console.log("Subarray:");
 console.log("Maximo:",res2.max_sum);
 console.log("Inicio:",res2.max_left);
 console.log("Fin:",res2.max_right);
+console.log();
+
+/**
+ *  FIND MAXIMUM SUBARRAY GREEDY
+ *  Loop Invariant ->
+ *  Complex -> O(n)
+ */
+
+function find_maximun_subarray_greedy(A) {
+	let max_left, max_right, max_sum, j;
+	j = 0;
+	max_sum = Number.MIN_VALUE;
+	let current_sum = 0;
+	for(let i=0; i < A.length; i++) {
+		current_sum += A[i];
+		if(current_sum > max_sum) {
+			max_sum = current_sum;
+			max_right = i;
+			max_left = j;
+		}
+		//Criterio greedy
+		if(current_sum < 0) {
+			current_sum = 0;
+			j = i + 1;
+		}
+	}
+	return {max_left, max_right, max_sum};
+}
+
+console.log("FIND MAXIMUM SUBARRAY GREEDY");
+console.log("Array:",array);
+const res3 = find_maximun_subarray_greedy(array);
+console.log("Subarray:");
+console.log("Maximo:",res3.max_sum);
+console.log("Inicio:",res3.max_left);
+console.log("Fin:",res3.max_right);
 console.log();
 
 
