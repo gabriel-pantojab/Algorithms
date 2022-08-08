@@ -21,5 +21,5 @@
 
 ## Search Algorithms
 
-- [Linear Search]()
-- [Binary Search]()
+- [Linear Search](https://github.com/GabrielPB96/Algorithms/blob/main/search/linearSearch.js)
+- [Binary Search](https://github.com/GabrielPB96/Algorithms/blob/main/search/binarySearch.js)
