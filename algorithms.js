@@ -7,7 +7,7 @@ for(let i = 0; i < randomArray.length; i++) {
 
 
 /*
-	INSERT SORT
+	INSERTION SORT
 
 	Loop Invariant -> (para el while)
 		Los elementos array[0..i-1] siempre estan ordenados.
@@ -134,7 +134,7 @@ console.log("Ordenada:",lista);
 console.log();
 
 /**
- *  INSERT SORT RECURSIVO
+ *  INSERTION SORT RECURSIVO
  */
 function insertionSortR(array,n) {
 	if(n > 1) {
@@ -201,7 +201,7 @@ console.log();
 /**
  *  BUBBLE SORT
  *  Loop Invariant ->
- *  Complex -> 
+ *  Complex -> O(n^2)
  */
 function bubbleSort(array) {
 	for(let i = 0; i < array.length - 1; i++) {
