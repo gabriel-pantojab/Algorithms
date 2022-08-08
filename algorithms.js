@@ -2,7 +2,7 @@
 const areaConsole = document.getElementById("console");
 const randomArray = new Array(20);
 for(let i = 0; i < randomArray.length; i++) {
-		randomArray[i] = Math.floor(Math.random() * 20);
+		randomArray[i] = Math.floor(Math.random() * 30);
 }
 
 
@@ -349,11 +349,8 @@ console.log();
 
 
 //**********************************************************************************************//
-
 /**
- * HEAP SORT
- * Loop Invariant ->
- * Complex -> O(nlogn)
+ * MAX HEAP
  */
 
 function left(i) {
@@ -437,4 +434,31 @@ const a = [4,1, 3, 2, 16, 9, 10, 14, 8, 7];
 let heap = BUILD_MAX_HEAP(a);
 console.log("array:",a);
 console.log("Max heap:",heap.heap);
+console.log();
+
+//**********************************************************************************************//
+
+/**
+ * HEAP SORT
+ * Loop Invariant ->
+ * Complex -> O(nlogn)
+ */
+
+function HEAP_SORT(A) {
+	let heap = BUILD_MAX_HEAP(A);
+	let array = heap.heap;
+	for(let i = A.length - 1; i >= 1; i--) {
+		let aux = array[0];
+		array[0] = array[i];
+		array[i] = aux;
+		heap.heap_size--;
+		max_heapify_i(array, 0, heap.heap_size);
+	}
+	return array;
+}
+let l7 = [...randomArray];
+console.log("HEAP SORT");
+console.log("Array:",l7);
+const res4 = HEAP_SORT(l7);
+console.log("Array:",res4);
 console.log();
