@@ -10,7 +10,7 @@ for(let i = 0; i < randomArray.length; i++) {
 	INSERT SORT
 
 	Loop Invariant -> (para el while)
-										Los elementos array[0..i-1] siempre estan ordenados.
+		Los elementos array[0..i-1] siempre estan ordenados.
 
 	Complex -> O(n^2)
 */
@@ -55,7 +55,7 @@ console.log();
 /*
 	SELECTION SORT
 	Loop Invariant -> (para el segundo for)
-										Los elementos array[0..i] siempre estan ordenados.
+		Los elementos array[0..i] siempre estan ordenados.
 	Complex -> O(n^2)
 */
 function selectionSort(array) {
@@ -82,9 +82,9 @@ console.log();
 	MERGE SORT
 
 	Loop Invariant -> 	(Para el for que va desde k=p a k<=r)
-						La subsecuencia A[p..k-1] siempre contiene los (k - p) elementos,
-						que son los elementos más pequeños de las secuencias L y R.
-						Tambien los elementos L[i] y R[j] son los más pequeños de ambas secuencias.
+		La subsecuencia A[p..k-1] siempre contiene los (k - p) elementos,
+		que son los elementos más pequeños de las secuencias L y R.
+		Tambien los elementos L[i] y R[j] son los más pequeños de ambas secuencias.
 
 	Complex -> O(nlg(n))
 */
@@ -348,4 +348,93 @@ console.log("Fin:",res3.max_right);
 console.log();
 
 
+//**********************************************************************************************//
 
+/**
+ * HEAP SORT
+ * Loop Invariant ->
+ * Complex -> O(nlogn)
+ */
+
+function left(i) {
+	//indexado desde 1
+	//return 2 * i;
+	//indexado desde 0
+	return 2 * (i+1) - 1;
+}
+
+function right(i) {
+	//indexado desde 1
+	//return 2 * i + 1;
+	//indexado desde 0
+	return 2 * (i+1);
+}
+
+function parent(i) {
+	//indexado desde 1
+	return Math.floor(i / 2);
+}
+
+//max heapify recursively
+function MAX_HEAPIFY(A, i, n) {
+	let LEFT, RIGHT, LARGEST;
+	LEFT = left(i);
+	RIGHT = right(i);
+	if(LEFT < n && A[LEFT] > A[i]) {
+		LARGEST = LEFT;
+	}else {
+		LARGEST = i;
+	}
+	if(RIGHT < n && A[RIGHT] > A[LARGEST]) {
+		LARGEST = RIGHT;
+	}
+	if(LARGEST != i) {
+		let aux = A[i];
+		A[i] = A[LARGEST];
+		A[LARGEST] = aux;
+		MAX_HEAPIFY(A, LARGEST, n);
+	}
+}
+
+//max heapify iteratively
+function max_heapify_i(A, i, n) {
+	let LEFT, RIGHT, LARGEST;
+	LARGEST = i;
+	do{
+		LEFT = left(i);
+		RIGHT = right(i);
+		if(LEFT < n && A[LEFT] > A[i]) {
+			LARGEST = LEFT;
+		}else {
+			LARGEST = i;
+		}
+		if(RIGHT < n && A[RIGHT] > A[LARGEST]) {
+			LARGEST = RIGHT;
+		}
+		if(LARGEST != i) {
+			let aux = A[i];
+			A[i] = A[LARGEST];
+			A[LARGEST] = aux;
+			i = LARGEST;
+			LARGEST = -1;
+		}
+	}while(LARGEST != i);
+}
+
+function BUILD_MAX_HEAP(array) {
+	let A = {
+		heap_size : array.length,
+		heap : [...array]
+	}
+	for(let i = Math.floor(array.length / 2); i >= 0; i--) {
+		//MAX_HEAPIFY(A.heap, i, A.heap_size);
+		max_heapify_i(A.heap, i, A.heap_size);
+	}
+	return A;
+}
+
+const a = [4,1, 3, 2, 16, 9, 10, 14, 8, 7];
+let heap = BUILD_MAX_HEAP(a);
+console.log("array:",a);
+console.log("Max heap:",heap.heap);
+console.log();
