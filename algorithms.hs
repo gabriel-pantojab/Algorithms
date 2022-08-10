@@ -78,3 +78,19 @@ binarySearch v xs
     mid = div (length xs) 2
     left = take mid xs
     rigth = drop mid xs
+
+{-
+  BUBBLE SORT
+-}
+bubbleSort :: (Ord a) => [a] -> [a]
+bubbleSort [] = []
+bubbleSort [x] = [x]
+bubbleSort xs = head arr : bubbleSort (tail arr)
+  where
+    arr = bubbleS xs
+    bubbleS [] = []
+    bubbleS [x] = []
+    bubbleS [x, y] = [min x y, max x y]
+    bubbleS (x : y : xs)
+      | x < y = x : bubbleS (y : xs)
+      | otherwise = y : bubbleS (x : xs)
