@@ -190,7 +190,7 @@ function binarySearchRA(v, A, a, b) {
 		else return binarySearchRA(v,A,a,m);
 	}
 	return A[a] === v ? a : -1;
-}
+}i
 let l5 = [1,2,3,4,5,6];
 console.log("BINARY SEARCH")
 console.log("Lista:",l5);
@@ -369,7 +369,7 @@ function right(i) {
 
 function parent(i) {
 	//indexado desde 1
-	return Math.floor(i / 2);
+	return Math.floor((i+1)/ 2) - 1;
 }
 
 //max heapify recursively
@@ -462,3 +462,45 @@ console.log("Array:",l7);
 const res4 = HEAP_SORT(l7);
 console.log("Array:",res4);
 console.log();
+
+
+//**********************************************************************************************//
+
+/**
+ * Priority Queue with max heap
+ */
+/**
+ * 
+ * @param {*Heap} A 
+ * @returns 
+ */
+function heap_extract_max(A) {
+	if (A.heap_size < 1) {
+		throw new Error("Heap underflow");
+	}
+	let max;
+	max = A.heap[0];
+	A.heap[0] = A.heap[A.heap_size - 1];
+	A.heap_size--;
+	max_heapify_i(A.heap, 0, A.heap_size);
+	return max;
+}
+
+function heap_increase_key(A, i, key) {
+	if(key < A.heap[i]) {
+		throw new Error("New key is smaller than current key");
+	}
+	A.heap[i] = key;
+	while(i > 0 && A.heap[parent(i)] < A.heap[i]) {
+		let aux = A.heap[i];
+		A.heap[i] = A.heap[parent(i)];
+		A.heap[parent(i)] = aux;
+		i = parent(i);
+	}
+}
+
+function heap_insert(A, key) {
+	A.heap_size++;
+	A.heap[A.heap_size - 1] = -INF;
+	heap_increase_key(A, A.heap_size - 1, key);
+}
