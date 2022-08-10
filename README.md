@@ -18,6 +18,7 @@
 - [Merge Sort](https://github.com/GabrielPB96/Algorithms/blob/main/sorting/mergeSort.js)
 - [Bubble Sort](https://github.com/GabrielPB96/Algorithms/blob/main/sorting/bubbleSort.js)
 - [Heap Sort](https://github.com/GabrielPB96/Algorithms/blob/main/sorting/heapSort.js)
+- [Quick Sort]()
 
 ## Search Algorithms
 
