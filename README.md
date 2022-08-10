@@ -27,9 +27,11 @@
 
 ## Data Structures
 
-- [Max Heap]()
-- [Priority Queue with Max Heap]()
+- [Heap]()
+
 
 ## Other Algorithms
 
+- [Max Heap]()
+- [Priority Queue with Max Heap]()
 - [Find Maximun Subarray]()
