@@ -7,9 +7,10 @@
 - Binary Search
 - Bubble Sort
 - Find Maximun Subarray
-- Max Heapify
-- Build Max Heap
+- Max Heap
 - Heap Sort
+- Priority Queue with Max Heap
+- Quick Sort
 
 ## Sort Algorithms
 
