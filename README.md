@@ -18,18 +18,18 @@
 - [Merge Sort](https://github.com/GabrielPB96/Algorithms/blob/main/sorting/mergeSort.js)
 - [Bubble Sort](https://github.com/GabrielPB96/Algorithms/blob/main/sorting/bubbleSort.js)
 - [Heap Sort](https://github.com/GabrielPB96/Algorithms/blob/main/sorting/heapSort.js)
-- [Quick Sort]()
+- [Quick Sort](https://github.com/GabrielPB96/Algorithms/blob/main/sorting/quickSort.js)
 
 ## Search Algorithms
 
 - [Linear Search](https://github.com/GabrielPB96/Algorithms/blob/main/search/linearSearch.js)
 - [Binary Search](https://github.com/GabrielPB96/Algorithms/blob/main/search/binarySearch.js)
 
-## Other Algorithms
-
-- [Find Maximun Subarray]()
-
 ## Data Structures
 
 - [Max Heap]()
 - [Priority Queue with Max Heap]()
+
+## Other Algorithms
+
+- [Find Maximun Subarray]()
