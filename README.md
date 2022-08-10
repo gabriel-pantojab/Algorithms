@@ -27,7 +27,7 @@
 
 ## Data Structures
 
-- [Heap]()
+- [Heap](https://github.com/GabrielPB96/Algorithms/blob/main/data-structures/Heap.js)
 
 
 ## Other Algorithms
